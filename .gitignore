@@ -4,3 +4,4 @@ testbench
 .phpunit.result.cache
 composer.lock
 cghooks.lock
+.env

@@ -24,7 +24,7 @@ Please see the [changelog](changelog.md) for more information on what has change
 ## Testing
 
 ``` bash
-$ REDIS_HOST=0.0.0.0 REDIS_PASSWORD=secret ./vendor/bin/phpunit
+$ TOKEN_API=xxx ./vendor/bin/phpunit
 ```
 
 For tests can be set all setting from `.env` file as `REDIS_PORT=6379`.

@@ -21,6 +21,6 @@
         </whitelist>
     </filter>
     <php>
-
+        <env name="TOKEN_API" value=""/>
     </php>
 </phpunit>

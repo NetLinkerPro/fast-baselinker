@@ -1,0 +1,50 @@
+{
+    "name": "netlinker/fast-baselinker",
+    "type": "library",
+    "description": "Laravel library for system baselinker.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "NetLinker",
+            "email": "netlinkerpro@gmail.com",
+            "homepage": "https://netlinker.pro",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/netlinkerpro/fast-baselinker",
+    "keywords": ["NetLinker", "fast-baselinker"],
+    "require": {
+        "illuminate/support": "~5|~6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "3.8.*",
+        "sempro/phpunit-pretty-print": "^1.0",
+        "brainmaestro/composer-git-hooks": "^2.8",
+        "orchestra/testbench-dusk": "3.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "NetLinker\\FastBaselinker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NetLinker\\FastBaselinker\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NetLinker\\FastBaselinker\\FastBaselinkerServiceProvider"
+            ],
+            "aliases": {
+                "FastBaselinker": "NetLinker\\FastBaselinker\\Facades\\FastBaselinker"
+            }
+        }
+    },
+    "scripts": {
+        "pre-push": "./vendor/bin/phpunit && echo pushing!"
+    }
+}

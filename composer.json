@@ -14,17 +14,36 @@
     "homepage": "https://github.com/netlinkerpro/fast-baselinker",
     "keywords": ["NetLinker", "fast-baselinker"],
     "require": {
-        "illuminate/support": "~5|~6",
+        "awes-io/base-js": "^1.8",
+        "awes-io/indigo-layout": "^1.10",
+        "awes-io/localization-helper": "^1.0",
+        "awes-io/repository": "^1.0",
+        "cybercog/laravel-ownership": "^5.2",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "^6.5",
-        "ext-json": "*"
+        "illuminate/support": "~5|~6"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
+        "brainmaestro/composer-git-hooks": "^2.8",
+        "jasonlewis/resource-watcher": "1.2.*",
         "mockery/mockery": "^1.1",
         "orchestra/testbench": "3.8.*",
-        "sempro/phpunit-pretty-print": "^1.0",
-        "brainmaestro/composer-git-hooks": "^2.8",
-        "orchestra/testbench-dusk": "3.8.*"
+        "orchestra/testbench-dusk": "3.8.*",
+        "phpunit/phpunit": "^8.0",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://repo.pkgkit.com",
+            "options": {
+                "http": {
+                    "header": [
+                        "API-TOKEN: dd6553e92dcf6b171c35924a6dc63daaec412f44e2cab6f42e00ebb14fc4ce96"
+                    ]
+                }
+            }
+        }
     },
     "autoload": {
         "psr-4": {

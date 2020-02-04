@@ -13,10 +13,10 @@ class FastBaselinkerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'netlinker');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'netlinker');
-//         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'fast-baselinker');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'fast-baselinker');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
@@ -63,22 +63,22 @@ class FastBaselinkerServiceProvider extends ServiceProvider
         ], 'fast-baselinker.config');
 
         // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/netlinker'),
-        ], 'fast-baselinker.views');*/
+        $this->publishes([
+            __DIR__.'/../resources/views' => base_path('resources/views/vendor/fast-baselinker'),
+        ], 'fast-baselinker.views');
 
         // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/netlinker'),
-        ], 'fast-baselinker.views');*/
+        $this->publishes([
+            __DIR__.'/../resources/assets' => public_path('vendor/fast-baselinker'),
+        ], 'fast-baselinker.views');
 
         // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/netlinker'),
-        ], 'fast-baselinker.views');*/
+        $this->publishes([
+            __DIR__.'/../resources/lang' => resource_path('lang/vendor/fast-baselinker'),
+        ], 'fast-baselinker.views');
 
         // Registering package commands.
-        // $this->commands([]);
+        $this->commands([]);
     }
 
 }

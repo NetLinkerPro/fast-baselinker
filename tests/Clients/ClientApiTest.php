@@ -16,15 +16,6 @@ class ClientApiTest extends TestCase
         parent::setUp();
     }
 
-    protected function getEnvironmentSetUp($app)
-    {
-        $env = Dotenv::create(__DIR__ . '/../../')->load();
-        $envToken = env('TOKEN_API');
-        $apiToken = $envToken ? $envToken : $env['TOKEN_API'];
-        Config::set('fast-baselinker-test.token_api', $apiToken);
-        Config::set('logging.default', 'stderr');
-    }
-
     public function testSendRequestWithParameters(){
         $client = new ClientApi(config('fast-baselinker-test.token_api'));
         $jsonResp = $client->request(MethodBaselinker::GET_COURIER_FIELDS, ['courier_code' => 'allekurier']);

@@ -2,6 +2,7 @@
 
 namespace NetLinker\FastBaselinker\Tests;
 
+use Dotenv\Dotenv;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class IntegratedTest extends TestCase
@@ -15,20 +16,8 @@ class IntegratedTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-
     }
 
-    protected function getEnvironmentSetUp($app)
-    {
-        // Setup default database to use sqlite :memory:
-        $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ]);
-
-    }
 
     public function test()
     {

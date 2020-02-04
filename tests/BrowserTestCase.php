@@ -2,18 +2,24 @@
 
 namespace NetLinker\FastBaselinker\Tests;
 
-use Orchestra\Testbench\TestCase as TestBench;
+use Dotenv\Dotenv;
+use Illuminate\Foundation\Application;
+use Orchestra\Testbench\Dusk\Bootstrap\LoadConfiguration;
+use Orchestra\Testbench\Dusk\TestCase as TestBench;
 
-abstract class TestCase extends TestBench
+abstract class BrowserTestCase extends TestBench
 {
     use TestHelper;
 
-    protected const TEST_APP_TEMPLATE = __DIR__.'/../testbench/template';
-    protected const TEST_APP = __DIR__.'/../testbench/laravel';
+    protected $app;
 
-    public static function setUpBeforeClass():void
+    protected const TEST_APP_TEMPLATE = __DIR__ . '/../testbench/template';
+
+    protected const TEST_APP = __DIR__ . '/../testbench/laravel';
+
+    public static function setUpBeforeClass(): void
     {
-        if (! file_exists(self::TEST_APP_TEMPLATE)) {
+        if (!file_exists(self::TEST_APP_TEMPLATE)) {
             self::setUpLocalTestbench();
         }
         parent::setUpBeforeClass();
@@ -33,6 +39,13 @@ abstract class TestCase extends TestBench
         parent::setUp();
     }
 
+    /**
+     * Define environment setup.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return void
+     */
     protected function getEnvironmentSetUp($app)
     {
         TestHelper::getEnvironmentSetUp($app);
@@ -46,7 +59,6 @@ abstract class TestCase extends TestBench
         $this->uninstallTestApp();
         parent::tearDown();
     }
-
 
     /**
      * Tell Testbench to use this package.
@@ -64,7 +76,7 @@ abstract class TestCase extends TestBench
     /**
      * Get package aliases.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
      *
      * @return array
      */

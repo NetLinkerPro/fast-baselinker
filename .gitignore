@@ -5,3 +5,6 @@ testbench
 composer.lock
 cghooks.lock
 .env
+tests/Browser/console
+tests/Browser/screenshots
+database/database.sqlite

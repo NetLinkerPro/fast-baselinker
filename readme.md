@@ -24,7 +24,7 @@ Please see the [changelog](changelog.md) for more information on what has change
 ## Testing
 
 ``` bash
-$ TOKEN_API=xxx ./vendor/bin/phpunit
+$ ./vendor/bin/dusk-updater detect --auto-update && PKGKIT_CDN_KEY=xxx TOKEN_API=xxx ./vendor/bin/phpunit
 ```
 
 For tests can be set all setting from `.env` file as `REDIS_PORT=6379`.

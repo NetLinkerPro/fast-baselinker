@@ -64,7 +64,8 @@ class Account extends Model implements OwnableContract
     public function resolveDefaultOwner()
     {
         $fieldUuid = config('fast-baselinker.owner.field_auth_user_owner_uuid');
-        return Owner::where('uuid', Auth::user()->$fieldUuid)->first();
+        $model =$this->getOwnerModel();
+        return $model::where('uuid', Auth::user()->$fieldUuid)->first();
     }
 
     /**

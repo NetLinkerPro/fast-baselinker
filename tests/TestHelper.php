@@ -47,6 +47,11 @@ trait TestHelper
         unset($composer['autoload']['classmap'][1]);
         // Pre-install illuminate/support
         $composer['require'] = [
+            'awes-io/context-menu' => '^1.0',
+            'awes-io/form-builder' => '^1.3',
+            'awes-io/modal-window' => '^1.0',
+            'awes-io/system-notify' => '^1.1',
+            'awes-io/table-builder' => '^1.0',
             'awes-io/base-js' => '^1.8',
             'awes-io/indigo-layout' => '^1.10',
             'awes-io/localization-helper' => '^1.0',
@@ -91,10 +96,10 @@ trait TestHelper
 
         $refreshing = false;
 
-        $listener->onModify(function($resource, $path) use (&$browser, &$refreshing, &$watchDir) {
+        $listener->onModify(function ($resource, $path) use (&$browser, &$refreshing, &$watchDir) {
 
             // exclude paths
-            $excludePath = !!array_filter(['testbench', '.idea', 'tests'], function($dir) use (&$path, &$watchDir){
+            $excludePath = !!array_filter(['testbench', '.idea', 'tests'], function ($dir) use (&$path, &$watchDir) {
                 return Str::startsWith($path, $watchDir . '/' . $dir);
             });
 
@@ -102,7 +107,7 @@ trait TestHelper
                 return;
             }
 
-            dump("{$path} has been modified.".PHP_EOL);
+            dump("{$path} has been modified." . PHP_EOL);
 
             $refreshing = true;
             $browser->refresh();
@@ -176,7 +181,7 @@ trait TestHelper
 
         // Setup default database to use sqlite :memory:
         $databasePath = __DIR__ . '/database/database.sqlite';
-        if (!File::exists($databasePath)){
+        if (!File::exists($databasePath)) {
             File::put($databasePath, '');
         }
 

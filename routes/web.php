@@ -14,48 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::domain(config('fast-baselinker.domain'))
-    ->name('fast-baselinker.')
+    ->as('fast-baselinker.')
     ->prefix(config('fast-baselinker.prefix'))
     ->middleware(config('fast-baselinker.middleware'))
     ->group(function () {
 
-        # Vendor assets
-        Route::prefix('assets')->as('assets.')->group(function () {
-
-            // CSS
-            Route::prefix('css')->as('css.')->group(function () {
-                Route::get('indigo-layout.css', config('fast-baselinker.controllers.assets') . '@cssIndigoLayout')->name('indigo_layout');
-                Route::get('system-notify.css', config('fast-baselinker.controllers.assets') . '@cssSystemNotify')->name('system_notify');
-                Route::get('table-builder.css', config('fast-baselinker.controllers.assets') . '@cssTableBuilder')->name('table_builder');
-                Route::get('context-menu.css', config('fast-baselinker.controllers.assets') . '@cssContextMenu')->name('context_menu');
-                Route::get('modal-window.css', config('fast-baselinker.controllers.assets') . '@cssModalWindow')->name('modal_window');
-                Route::get('form-builder.css', config('fast-baselinker.controllers.assets') . '@cssFormBuilder')->name('form_builder');
-            });
-
-            // JS
-            Route::prefix('js')->as('js.')->group(function () {
-                Route::get('indigo-layout.js', config('fast-baselinker.controllers.assets') . '@jsIndigoLayout')->name('indigo_layout');
-                Route::get('system-notify.js', config('fast-baselinker.controllers.assets') . '@jsSystemNotify')->name('system_notify');
-                Route::get('theme-switcher.js', config('fast-baselinker.controllers.assets') . '@jsThemeSwitcher')->name('theme_switcher');
-                Route::get('base-js.js', config('fast-baselinker.controllers.assets') . '@jsBaseJs')->name('base_js');
-                Route::get('table-builder.js', config('fast-baselinker.controllers.assets') . '@jsTableBuilder')->name('table_builder');
-                Route::get('context-menu.js', config('fast-baselinker.controllers.assets') . '@jsContextMenu')->name('context_menu');
-                Route::get('modal-window.js', config('fast-baselinker.controllers.assets') . '@jsModalWindow')->name('modal_window');
-                Route::get('form-builder.js', config('fast-baselinker.controllers.assets') . '@jsFormBuilder')->name('form_builder');
-            });
-
-            // Fonts
-            Route::prefix('fonts')->as('fonts.')->group(function () {
-                Route::get('icons.woff', config('fast-baselinker.controllers.assets') . '@fontsIconsWoff')->name('icons_woff');
-                Route::get('icons.ttf', config('fast-baselinker.controllers.assets') . '@fontsIconsTtf')->name('icons_ttf');
-                Route::get('icons.eot', config('fast-baselinker.controllers.assets') . '@fontsIconsEot')->name('icons_eot');
-            });
-
-            // Img
-            Route::prefix('img')->as('img.')->group(function () {
-                Route::get('loading.svg', config('fast-baselinker.controllers.assets') . '@imgLoadingSvg')->name('loading_svg');
-            });
-        });
+        # Assets AWES
+        Route::get('assets/{module}/{type}/{filename}', config('fast-baselinker.controllers.assets') . '@getAwes')->name('assets.awes');
 
         # Dashboard
         Route::prefix('/')->as('dashboard.')->group(function () {

@@ -54,7 +54,7 @@ class Account extends Model implements OwnableContract
 
     public $orderable = [''];
 
-    protected $encryptable = [];
+    protected $encryptable = ['api_token'];
 
     /**
      * Resolve entity default owner.

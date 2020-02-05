@@ -18,6 +18,7 @@ class Account extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'api_token' => $this->api_token,
+            'uuid' => $this->uuid,
         ];
     }
 }

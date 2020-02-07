@@ -31,7 +31,7 @@ class FastBaselinkerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/fast_baselinker.php', 'fast-baselinker');
+        $this->mergeConfigFrom(__DIR__ . '/../config/fast-baselinker.php', 'fast-baselinker');
 
         // Register the service the package provides.
         $this->app->singleton('fast-baselinker', function ($app) {
@@ -59,23 +59,23 @@ class FastBaselinkerServiceProvider extends ServiceProvider
 
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__ . '/../config/fast_baselinker.php' => config_path('fast_baselinker.php'),
-        ], 'fast-baselinker.config');
+            __DIR__ . '/../config/fast-baselinker.php' => config_path('fast-baselinker.php'),
+        ], 'config');
 
         // Publishing the views.
         $this->publishes([
             __DIR__.'/../resources/views' => base_path('resources/views/vendor/fast-baselinker'),
-        ], 'fast-baselinker.views');
+        ], 'views');
 
         // Publishing assets.
         $this->publishes([
             __DIR__.'/../resources/assets' => public_path('vendor/fast-baselinker'),
-        ], 'fast-baselinker.views');
+        ], 'views');
 
         // Publishing the translation files.
         $this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/fast-baselinker'),
-        ], 'fast-baselinker.views');
+        ], 'views');
 
         // Registering package commands.
         $this->commands([]);

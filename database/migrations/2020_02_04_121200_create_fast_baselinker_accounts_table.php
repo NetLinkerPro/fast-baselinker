@@ -21,7 +21,7 @@ class CreateFastBaselinkerAccountsTable extends Migration
             $table->string('uuid', 36)->index();
 
             $table->string('name');
-            $table->string('api_token');
+            $table->text('api_token');
 
             $table->softDeletes();
             $table->timestamps();

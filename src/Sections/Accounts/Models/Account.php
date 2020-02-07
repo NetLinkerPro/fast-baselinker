@@ -52,7 +52,7 @@ class Account extends Model implements OwnableContract
      */
     public $fillable = ['uuid', 'owner_uuid', 'name', 'api_token'];
 
-    public $orderable = [''];
+    public $orderable = [];
 
     protected $encryptable = ['api_token'];
 

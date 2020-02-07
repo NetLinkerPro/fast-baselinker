@@ -10,7 +10,7 @@
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
             <div class="frame__overlay" v-show="$awesLayoutCrm.togglenav || $awesLayoutCrm.showUserMenu" @click="$awesLayoutCrm.overlayClick"></div>
         </transition>
-        @isset($sidebar)
+        @isset($sidebarDashboard)
             <div class="frame__aside" id="aside">
                 <div class="frame__aside-line">
                     <span class="frame__aside-open g-res--tablet-lg" :class="{ active: $awesLayoutCrm.togglenav }" @click="$awesLayoutCrm.openNav"><span></span></span>
@@ -22,7 +22,7 @@
                     <div class="frame__aside-mhead g-res--tablet-lg"><a class="frame__aside-close" href="" @click.prevent="$awesLayoutCrm.openNav()"><i class="icon icon-cross"></i></a>
                         <h4 class="frame__aside-mtitle"><span>{!! config('indigo-layout.name') !!}</span></h4>
                     </div>
-                    @navSidebar(['navigation' => $sidebar])
+                    @navSidebar(['navigation' => $sidebarDashboard])
                 </nav>
             </div>
         @endisset

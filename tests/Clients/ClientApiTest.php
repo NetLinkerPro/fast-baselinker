@@ -19,6 +19,7 @@ class ClientApiTest extends TestCase
     public function testSendRequestWithParameters(){
         $client = new ClientApi(config('fast-baselinker-test.token_api'));
         $jsonResp = $client->request(MethodBaselinker::GET_COURIER_FIELDS, ['courier_code' => 'allekurier']);
+        $jsonResp = $client->request(MethodBaselinker::GET_ORDERS, ['order_id' => '133412378']);
         $this->assertIsArray($jsonResp);
     }
 

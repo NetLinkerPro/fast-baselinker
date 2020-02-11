@@ -12,6 +12,16 @@ use NetLinker\FastBaselinker\Methods\MethodBaselinker;
 
 class OrderRepository
 {
+
+    /** @var string $lastDateOrderKey */
+    protected $lastDateOrderKey = 'date_add';
+
+    /** @var string $dateFromParameter */
+    protected $dateFromParameter = 'date_from';
+
+    /** @var array $parameters */
+    protected $parameters = ['get_unconfirmed_orders' => true];
+
     /**
      * Get orders
      *
@@ -35,7 +45,7 @@ class OrderRepository
             }
 
             $lastOrder = $orders->last();
-            $fromTimestamp = $lastOrder['date_confirmed'];
+            $fromTimestamp = $lastOrder[$this->lastDateOrderKey];
 
         }
 
@@ -53,10 +63,47 @@ class OrderRepository
      */
     public function getLimit(ClientApi $clientApi, int $fromTimestamp)
     {
-        $resp = $clientApi->request(MethodBaselinker::GET_ORDERS, [
-            'date_confirmed_from' => $fromTimestamp,
-        ]);
+        $resp = $clientApi->request(MethodBaselinker::GET_ORDERS, array_merge([
+            $this->dateFromParameter => $fromTimestamp,
+        ], $this->parameters));
 
         return collect($resp['orders']);
     }
+
+    /**
+     * Set last date order key
+     *
+     * @param string $lastDateOrderKey
+     * @return $this
+     */
+    public function setLastDateOrderKey(string $lastDateOrderKey)
+    {
+        $this->lastDateOrderKey = $lastDateOrderKey;
+        return $this;
+    }
+
+    /**
+     * Set parameters
+     *
+     * @param array $parameters
+     * @return $this
+     */
+    public function setParameters(array $parameters)
+    {
+        $this->parameters = $parameters;
+        return $this;
+    }
+
+    /**
+     * Set date from parameter
+     *
+     * @param string $dateFromParameter
+     * @return $this
+     */
+    public function setDateFromParameter(string $dateFromParameter)
+    {
+        $this->dateFromParameter = $dateFromParameter;
+        return $this;
+    }
+
 }

@@ -16,7 +16,7 @@
        <div class="section">
         @table([
             'name' => 'accounts_table',
-            'row_url'=> route('fast-baselinker.accounts.index') . '/{id}',
+            'row_url'=> '',
             'scope_api_url' => route('fast-baselinker.accounts.scope'),
             'scope_api_params' => ['']
         ])
